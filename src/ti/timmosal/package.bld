@@ -1,0 +1,32 @@
+/*
+ *  ======== ti/timmosal/package.bld ========
+ */
+
+var Build = xdc.useModule('xdc.bld.BuildEnvironment');
+var Pkg   = xdc.useModule('xdc.bld.PackageContents');
+
+var commonBld = xdc.loadCapsule("ti/omx/build/common.bld");
+
+var compileOpts=" -D_CIO ";
+
+var srcListbios6   = ["./bios6/src/timm_osal_trace.c", "./bios6/src/timm_osal_task.c", "./bios6/src/timm_osal_semaphores.c", "./bios6/src/timm_osal_pipes.c", "./bios6/src/timm_osal_mutex.c", "./bios6/src/timm_osal_memory.c", "./bios6/src/timm_osal_events.c","./bios6/src/timm_osal.c","./StmLibrary/StmLibrary.c", "./StmLibrary/STMHelper.c",];
+
+var srcListLinux  = ["./linux/src/timm_osal_trace.c", "./linux/src/timm_osal_task.c", "./linux/src/timm_osal_semaphores.c", "./linux/src/timm_osal_pipes.c", "./linux/src/timm_osal_mutex.c", "./linux/src/timm_osal_memory.c", "./linux/src/timm_osal_events.c","./linux/src/timm_osal.c",];
+
+var LIB_NAME        = 'lib/' + Pkg.name;
+
+for each (var targ in Build.targets){
+   
+  if (targ.name == 'M3') {
+     Pkg.addLibrary(LIB_NAME, targ, {copts: compileOpts}).addObjects(srcListbios6);
+  }
+  else if (targ.name == 'C674') {
+     Pkg.addLibrary(LIB_NAME, targ, {copts: compileOpts}).addObjects(srcListbios6);
+  }  
+  else if (targ.name == 'GCArmv5T') {
+     Pkg.addLibrary(LIB_NAME, targ, {copts: compileOpts}).addObjects(srcListLinux);
+  }
+}
+
+Pkg.attrs.exportAll = true;
+

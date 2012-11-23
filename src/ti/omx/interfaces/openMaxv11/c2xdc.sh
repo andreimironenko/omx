@@ -1,0 +1,14 @@
+cat $1 | sed -e "s@typedef [ ]*\(enum\|struct\)@\1@g"   \
+             -e "s@#ifndef.*@@g"  \
+             -e "s@#endif@@g"     \
+             -e "s@^[ ]*}[ ]*[A-Za-z0-9_][A-Za-z0-9_]*[ ]*;@};@g"    \
+             -e "s@^#define[ ]*\([A-Za-z_0-9]*\)[ ]*\([A-Za-z_0-9]*\)@const UInt32 \1 = \2;@g"   \
+             -e "s@OMX_\(S[0-9][0-9]*\|U[0-9][0-9]*\)@OMX_Types.OMX_\1@g" \
+             -e "s@OMX_\(BOOL\|VERSIONTYPE\|STRING\|NATIVE\|TICKS\|PTR\)@OMX_Types.OMX_\1@g" \
+             -e "s@OMX_\(DIRTYPE\|HANDLETYPE\)@OMX_Types.OMX_\1@g" \
+             -e "s@OMX_\(AUDIO_PORTDEFINITIONTYPE\)@OMX_Audio.OMX_\1@g" \
+             -e "s@OMX_\(VIDEO_PORTDEFINITIONTYPE\)@OMX_Video.OMX_\1@g" \
+             -e "s@OMX_\(IMAGE_PORTDEFINITIONTYPE\)@OMX_Image.OMX_\1@g" \
+             -e "s@OMX_\(OTHER_PORTDEFINITIONTYPE\)@OMX_Other.OMX_\1@g" \
+             -e "s@\([A-Za-z0-9_][A-Za-z0-9_]*\)\(\** [ ]*\**\)\([A-Za-z0-9_][A-Za-z0-9_]*\)[ ]*\(,\|)\)@\1\2 \4  @g" \
+             -e "s@#include [ ]*<\([A-Za-z0-9_][A-Za-z0-9_]*\)\.h>@import khronos.openMaxv11.\1;@g" 

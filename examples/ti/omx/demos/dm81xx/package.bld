@@ -1,0 +1,51 @@
+/*
+ *  ======== ti/omx/demos/dm81xx/package.bld ========
+ */
+
+/* explicit references to global objects */
+var Build = xdc.useModule('xdc.bld.BuildEnvironment');
+var Pkg = xdc.useModule('xdc.bld.PackageContents');
+
+/* use common package build support */
+var BuildHelp = xdc.useModule('ti.sdo.tools.build.PackageBuildHelp');
+
+
+/* clean bin folder */
+Pkg.generatedFiles.$add("bin/");
+
+/* add custom files to all releases */
+Pkg.attrs.exportCfg = false;
+Pkg.attrs.exportDoc = true;
+Pkg.attrs.exportSrc = false;
+Pkg.attrs.exportExe = false;
+Pkg.attrs.exportAll = true;
+Pkg.otherFiles = [
+    "package.bld",
+];
+
+/* get absolute path to SysLink's repository */
+// var SysLinkRepo = xdc.getPackageRepository('ti.syslink.ipc');
+
+/* these files will be included in all releases */
+Pkg.otherFiles = [
+    "package.bld",
+    "package.xdc",
+    "DspAppMain.cfg",
+    "AppLogCfg.cfg",
+    "AppMemSegPlacementCfg.cfg",
+    "BiosCfg.cfg",
+    "DioFQCfg.cfg",
+    "DmmDelegateCfg.cfg",
+    "DomxIpcCfg.cfg",
+    "DomxRcmCfg.cfg",
+    "DomxSysMgrCfg.cfg",
+    "GTCfg.cfg",
+    "SyslinkCfg.cfg",
+    "ThrLoadCfg.cfg",
+    "TimmOsalCfg.cfg",
+    "DomxComponentTableCfg.cfg",
+    "src",
+    "bin"
+];
+
+

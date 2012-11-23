@@ -1,0 +1,109 @@
+//var omx_platform = "sim816X";
+//var omx_platform = "zebu816X";
+//var omx_platform = "evmSi816X";
+//var omx_platform = "evmSi814X";
+//var platFormMem = "256M";
+//var platFormMem = "512M";
+//var platFormMem = "1024M";
+
+var omx_platform = java.lang.System.getenv("PLATFORM");
+
+
+var platFormMem = java.lang.System.getenv("PLATFORM_MEM");
+print ("platform memory Selected: " + platFormMem);
+
+if (platFormMem == "1024M") {
+ xdc.loadCapsule("ducatiplatform.xs");
+}
+else if (platFormMem == "512M") {
+  if (omx_platform == "ti816x-evm") {
+   xdc.loadCapsule("ducatiplatform_ti816x_512MB.xs");
+  }
+  if (omx_platform == "ti814x-evm") {
+   xdc.loadCapsule("ducatiplatform_ti814x_512MB.xs");
+  }
+}
+else if (platFormMem == "256M") {
+  xdc.loadCapsule("ducatiplatform_256MB.xs");  
+}
+else {
+  throw new Error("Unsupported value for platFormMem : " + platFormMem);
+}
+
+var buildReleaseConfig = true;
+var maxResolution = java.lang.System.getenv("OMXMAXRESOLUTION");
+print ("Max Resolution Selected: " + maxResolution);
+
+var Build         = xdc.useModule('xdc.bld.BuildEnvironment');
+var M3            = xdc.useModule('ti.targets.arm.elf.M3');
+//var M3            = xdc.useModule('ti.targets.arm.M3');
+
+M3.rootDir        = java.lang.System.getenv("TMS470CGTOOLPATH");
+//M3.ccOpts.suffix  += " --enum_type=packed";
+M3.ccOpts.suffix  += "-g -ms --gcc -D___DSPBIOS___ -D___DUCATI_FW___";
+//M3.ccOpts.suffix += " --entry_hook=OMX_UTL_TRACE_FunctionCallFlowEntryHook --entry_parm=address";
+//M3.ccOpts.suffix += " --exit_hook=OMX_UTL_TRACE_FunctionCallFlowExitHook --exit_parm=address";
+if (omx_platform == "sim816X") {
+  M3.ccOpts.suffix += " -DTI_816X_BUILD -DPLATFORM_SIM ";
+}
+if (omx_platform == "zebu816X") {
+  M3.ccOpts.suffix += " -DTI_816X_BUILD -DPLATFORM_ZEBU ";
+}
+if (omx_platform == "ti816x-evm") {
+  M3.ccOpts.suffix += " -DTI_816X_BUILD -DPLATFORM_EVM_SI -DVPS_TRACE_ENABLE -DVPS_ASSERT_ENABLE";
+}
+if (omx_platform == "ti814x-evm") {
+  M3.ccOpts.suffix += " -DPLATFORM_EVM_SI -DTI_814X_BUILD -DVPS_TRACE_ENABLE -DVPS_ASSERT_ENABLE";
+}
+if (maxResolution == "hd") {
+  M3.ccOpts.suffix += " -DMAX_RESOLUTION_HD ";
+}
+
+M3.ccOpts.suffix += " -DSYSLINK_USE_TILER ";
+M3.ccOpts.suffix += " -DSYSLINK_BUILD_RTOS ";
+/*M3.ccOpts.suffix  += "-D___DSPBIOS___";*/
+M3.lnkOpts.suffix += " --zero_init=off ";
+M3.lnkOpts.suffix += " -x ";
+M3.lnkOpts.suffix  += "  --dynamic --retain=_Ipc_ResetVector ";
+//M3.lnkOpts.suffix  += " --unused_section_elimination=off ";
+//set default platform and list of all interested platforms for M3
+M3.platforms = ["ti.platforms.generic:DucatiPlatform_Core0",
+                "ti.platforms.generic:DucatiPlatform_Core1"];
+//M3.platforms = ["ti.omx.demos.platform.Evm8168:DM8168Evm_Ducati_Core0",
+//                "ti.omx.demos.platform.Evm8168:DM8168Evm_Ducati_Core1"];
+M3.platform = M3.platforms[0];
+
+/************************************
+* Setup for WIN target
+************************************/
+var WIN = xdc.useModule('microsoft.targets.Win32');
+WIN.rootDir = "C:/Program Files/Microsoft Visual Studio 9.0";
+WIN.vcPath = [
+        ["VC8",
+                {
+                    compilerDir: "VC",
+                    dllPath: "Common7/IDE",
+                    sdkPath: "C:/Progra~1/MI2578~1/Windows/v6.0A",
+                    libs: " msvcrt.lib setargv.obj oldnames.lib ole32.lib oleaut32.lib olepro32.lib uuid.lib kernel32.lib user32.lib gdi32.lib advapi32.lib shell32.lib comctl32.lib"
+                }
+        ],
+];
+
+WIN.ccOpts.suffix += "-D___DSPBIOS___";
+
+Build.targets     = [
+                 M3,                                  
+                    ];
+
+var Pkg = xdc.module("xdc.bld.PackageContents");
+Pkg.attrs.archiver = "zip";     /* package archive format is .zip */
+/*
+ *  ======== Pkg.libTemplate ========
+ *  Set default library version template to be used by all packages
+ */
+Pkg.libTemplate = "ti/sdo/ce/utils/libvers.xdt";
+
+
+Pkg.attrs.profile = "debug";     /* default build profile is "debug" */
+
+                

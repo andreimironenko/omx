@@ -1,0 +1,17 @@
+
+var Build = xdc.useModule('xdc.bld.BuildEnvironment');
+var Pkg = xdc.useModule('xdc.bld.PackageContents');
+
+/* these files will be included in all releases */
+Pkg.otherFiles = [
+    "common.bld",
+    "config.bld",
+    "config_ca8.bld",
+    "config_dsp.bld",
+    "ducatiammu.cfg",
+    "ducatiplatform_ti816x.xs",
+    "ducatiplatform_ti814x.xs",
+    "package.bld",
+    "MemSegmentDefinition.xs",
+];
+

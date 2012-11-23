@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  This file conforms to the DTD xdc/bld/build.dtd -->
+<package name="ti.timmosal" version="" producerId="undefined">
+    <units>
+    </units>
+    <sources>
+        <srcFile name="package/package_ti.timmosal.c"/>
+        <srcFile name="./bios6/src/timm_osal_trace.c"/>
+        <srcFile name="./bios6/src/timm_osal_task.c"/>
+        <srcFile name="./bios6/src/timm_osal_semaphores.c"/>
+        <srcFile name="./bios6/src/timm_osal_pipes.c"/>
+        <srcFile name="./bios6/src/timm_osal_mutex.c"/>
+        <srcFile name="./bios6/src/timm_osal_memory.c"/>
+        <srcFile name="./bios6/src/timm_osal_events.c"/>
+        <srcFile name="./bios6/src/timm_osal.c"/>
+        <srcFile name="./StmLibrary/StmLibrary.c"/>
+        <srcFile name="./StmLibrary/STMHelper.c"/>
+    </sources>
+    <configscripts>
+    </configscripts>
+    <makefiles>
+        <srcFile name="package.mak" src="package.bld"/>
+        <srcFile name="package/package.xdc.dep" src="package.xdc"/>
+        <srcFile name="package/package.cfg.dep" src="package.xdc"/>
+        <srcFile name="lib/ti.timmosal.ae674.mak" src="package.bld"/>
+        <srcFile name="package/lib/lib/ti.timmosal/package/package_ti.timmosal.oe674.dep" src="package/package_ti.timmosal.c"/>
+        <srcFile name="package/lib/lib/ti.timmosal/./bios6/src/timm_osal_trace.oe674.dep" src="./bios6/src/timm_osal_trace.c"/>
+        <srcFile name="package/lib/lib/ti.timmosal/./bios6/src/timm_osal_task.oe674.dep" src="./bios6/src/timm_osal_task.c"/>
+        <srcFile name="package/lib/lib/ti.timmosal/./bios6/src/timm_osal_semaphores.oe674.dep" src="./bios6/src/timm_osal_semaphores.c"/>
+        <srcFile name="package/lib/lib/ti.timmosal/./bios6/src/timm_osal_pipes.oe674.dep" src="./bios6/src/timm_osal_pipes.c"/>
+        <srcFile name="package/lib/lib/ti.timmosal/./bios6/src/timm_osal_mutex.oe674.dep" src="./bios6/src/timm_osal_mutex.c"/>
+        <srcFile name="package/lib/lib/ti.timmosal/./bios6/src/timm_osal_memory.oe674.dep" src="./bios6/src/timm_osal_memory.c"/>
+        <srcFile name="package/lib/lib/ti.timmosal/./bios6/src/timm_osal_events.oe674.dep" src="./bios6/src/timm_osal_events.c"/>
+        <srcFile name="package/lib/lib/ti.timmosal/./bios6/src/timm_osal.oe674.dep" src="./bios6/src/timm_osal.c"/>
+        <srcFile name="package/lib/lib/ti.timmosal/./StmLibrary/StmLibrary.oe674.dep" src="./StmLibrary/StmLibrary.c"/>
+        <srcFile name="package/lib/lib/ti.timmosal/./StmLibrary/STMHelper.oe674.dep" src="./StmLibrary/STMHelper.c"/>
+        <srcFile name="package/rel/ti_timmosal.tar.gz.dep" src="package/rel/ti_timmosal.xdc.inc"/>
+    </makefiles>
+    <targets>
+        <target name="ti.targets.elf.C674"
+            version="ti.targets.elf.C674{1,0,7.3,1"
+            platform="ti.platforms.evmDM8148"
+            isa="674"
+            suffix="e674"
+            rootDir="/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/dsp-devkit/cgt6x_7_3_1"
+            os="undefined"
+            rts="ti.targets.rts6000">
+            <model endian="little"
+                codeModel="undefined"
+                dataModel="undefined"/>
+        </target>
+    </targets>
+    <libraries>
+    <library name="lib/ti.timmosal"
+        pname="lib/ti.timmosal.ae674"
+        profile="debug"
+        target="ti.targets.elf.C674"/>
+    </libraries>
+    <configurations>
+    </configurations>
+    <executables>
+    </executables>
+    <tests>
+    </tests>
+    <releases relDir="package/rel/">
+    <release name="ti_timmosal"
+        pname="ti_timmosal.tar.gz"
+        label="default"
+    >
+        <file name="package/package.bld.xml"/>
+        <file name="package/package.ext.xml"/>
+        <file name="package/package.rel.dot"/>
+        <file name="package/build.cfg"/>
+        <file name="package/package.xdc.inc"/>
+        <file name="package/package.cfg.xdc.inc"/>
+        <file name="lib/ti.timmosal.ae674"/>
+    </release>
+    </releases>
+    <repositories>
+    </repositories>
+</package>

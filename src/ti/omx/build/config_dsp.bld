@@ -1,0 +1,51 @@
+var omx_platform = java.lang.System.getenv("PLATFORM");
+
+var platFormMem = "1024M";
+
+//create dsp_platform.xs
+  xdc.loadCapsule("dspsubsys.xs");
+
+var buildReleaseConfig = true;
+
+var Build         = xdc.useModule('xdc.bld.BuildEnvironment');
+var C674            = xdc.useModule('ti.targets.elf.C674');
+var pdsOpts = " -pdr -pden -pds=452 -pds=67 -pds1110";
+var rDefs  = " -DDBC_ASSERTS=0 -DGT_ASSERT=0 -DGT_TRACE=0";
+
+/* modified by karthik */
+C674.rootDir        = java.lang.System.getenv("CGTOOLS_ELF");
+C674.ccOpts.suffix  += "--gcc -mi10 -mo --no_compress -DOS_DSPBIOS -DDBC_ASSERTS=1 -DGT_ASSERT=1 -DGT_TRACE=1 -DPLATFORM_EVM_SI -DTI_816X_BUILD";
+
+/* karthik - Tiler not used in centaurus. remove this */
+//C674.ccOpts.suffix += " -DSYSLINK_USE_TILER ";
+C674.ccOpts.suffix += " -DSYSLINK_BUILD_RTOS  ";
+C674.lnkOpts.suffix += " --zero_init=off ";
+C674.lnkOpts.suffix += " -x ";
+C674.lnkOpts.suffix  += "  --dynamic --retain=_Ipc_ResetVector ";
+//C674.platforms = ["ti.platforms.evmDM8168"];
+if (omx_platform == "ti816x-evm") {
+C674.platforms = ["ti.platforms.generic:plat"];
+}
+else
+{
+C674.platforms = ["ti.platforms.evmDM8148"];
+}
+
+C674.platform = C674.platforms[0];
+
+Build.targets     = [
+                 C674,                                  
+                    ];
+
+var Pkg = xdc.module("xdc.bld.PackageContents");
+Pkg.attrs.compress = true;
+/*
+ *  ======== Pkg.libTemplate ========
+ *  Set default library version template to be used by all packages
+ */
+Pkg.libTemplate = "ti/sdo/ce/utils/libvers.xdt";
+
+
+Pkg.attrs.profile = "debug"; /* default build profile is "debug" */
+
+                

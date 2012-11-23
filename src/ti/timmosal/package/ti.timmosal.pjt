@@ -1,0 +1,19 @@
+; Code Composer Project File, Version 2.0 (do not modify or remove this line)
+[Project Settings]
+ProjectName="ti.timmosal"
+ProjectType=External
+CPUFamily=TMS320C67XX
+Tool="CustomBuilder"
+Config="Package"
+[Source Files]
+Source="../package/package_ti.timmosal.c"
+Source=".././bios6/src/timm_osal_trace.c"
+Source=".././bios6/src/timm_osal_task.c"
+Source=".././bios6/src/timm_osal_semaphores.c"
+Source=".././bios6/src/timm_osal_pipes.c"
+Source=".././bios6/src/timm_osal_mutex.c"
+Source=".././bios6/src/timm_osal_memory.c"
+Source=".././bios6/src/timm_osal_events.c"
+Source=".././bios6/src/timm_osal.c"
+Source=".././StmLibrary/StmLibrary.c"
+Source=".././StmLibrary/STMHelper.c"

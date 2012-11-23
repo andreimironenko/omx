@@ -1,0 +1,127 @@
+//var omx_platform = "sim";
+//var omx_platform = "zebu";
+var omx_platform = "evmSi";
+//var platFormMem = "256M";
+//var platFormMem = "512M";
+var platFormMem = "1024M";
+
+if (platFormMem == "1024M") {
+  xdc.loadCapsule("ducatiplatform_ti816x.xs");
+}
+else if (platFormMem == "512M") {
+  xdc.loadCapsule("ducatiplatform_512MB.xs");
+}
+else if (platFormMem == "256M") {
+  xdc.loadCapsule("ducatiplatform_256MB.xs");  
+}
+else {
+  throw new Error("Unsupported value for platFormMem : " + platFormMem);
+}
+
+var buildReleaseConfig = true;
+var maxResolution = java.lang.System.getenv("OMXMAXRESOLUTION");
+print ("Max Resolution Selected: " + maxResolution);
+
+
+
+var Build         = xdc.useModule('xdc.bld.BuildEnvironment');
+var M3            = xdc.useModule('ti.targets.arm.elf.M3');
+//var M3            = xdc.useModule('ti.targets.arm.M3');
+
+M3.rootDir        = java.lang.System.getenv("TMS470CGTOOLPATH");
+//M3.ccOpts.suffix  += " --enum_type=packed";
+M3.ccOpts.suffix  += "-g -ms --gcc -D___DSPBIOS___ -D___DUCATI_FW___";
+if (omx_platform == "sim") {
+  M3.ccOpts.suffix += " -DPLATFORM_SIM ";
+}
+if (omx_platform == "zebu") {
+  M3.ccOpts.suffix += " -DPLATFORM_ZEBU ";
+}
+if (omx_platform == "evmSi") {
+  M3.ccOpts.suffix += " -DPLATFORM_EVM_SI ";
+}
+
+M3.ccOpts.suffix += " -DSYSLINK_USE_TILER ";
+/*M3.ccOpts.suffix  += "-D___DSPBIOS___";*/
+M3.lnkOpts.suffix += " --zero_init=off ";
+M3.lnkOpts.suffix += " -x ";
+M3.lnkOpts.suffix  += "  --dynamic --retain=_Ipc_ResetVector ";
+//M3.lnkOpts.suffix  += " --unused_section_elimination=off ";
+//set default platform and list of all interested platforms for M3
+M3.platforms = ["ti.platforms.generic:DucatiPlatform_Core0",
+                "ti.platforms.generic:DucatiPlatform_Core1"];
+M3.platform = M3.platforms[0];
+
+var GCArmv5T = xdc.useModule('gnu.targets.arm.GCArmv5T');
+GCArmv5T.LONGNAME = "bin/arm-none-linux-gnueabi-gcc";
+var codeSourceryRootDir = java.lang.System.getenv("CODESOURCERYCGTOOLS");
+GCArmv5T.rootDir = codeSourceryRootDir;
+
+if (omx_platform == "sim") {
+  GCArmv5T.ccOpts.suffix += " -DPLATFORM_SIM ";
+}
+if (omx_platform == "zebu") {
+  GCArmv5T.ccOpts.suffix += " -DPLATFORM_ZEBU ";
+}
+if (omx_platform == "evmSi") {
+  GCArmv5T.ccOpts.suffix += " -DPLATFORM_EVM_SI ";
+}
+
+if (maxResolution == "hd") {
+  GCArmv5T.ccOpts.suffix += " -DMAX_RESOLUTION_HD ";
+}
+
+//GCArmv5T.ccOpts.suffix += " -DPLATFORM_SIM ";
+GCArmv5T.ccOpts.suffix += " -DSYSLINK_BUILD_HLOS ";
+GCArmv5T.ccOpts.prefix += " "
+    // options that check quality/strictness of code
+    + "-Wall "
+    // supress some warnings caused by .xdc.h files
+    + "-fno-strict-aliasing "
+    ;
+GCArmv5T.lnkOpts.suffix = GCArmv5T.lnkOpts.suffix.replace("-lstdc++", "");
+GCArmv5T.lnkOpts.suffix = "-lpthread -lrt " + GCArmv5T.lnkOpts.suffix;
+GCArmv5T.platforms = [
+    "host.platforms.arm"
+];
+delete GCArmv5T.profiles["coverage"];
+delete GCArmv5T.profiles["profile"];
+delete GCArmv5T.profiles["whole_program"];
+delete GCArmv5T.profiles["whole_program_debug"];
+delete GCArmv5T.profiles["release"];
+
+/************************************
+* Setup for WIN target
+************************************/
+var WIN = xdc.useModule('microsoft.targets.Win32');
+WIN.rootDir = "C:/Program Files/Microsoft Visual Studio 9.0";
+WIN.vcPath = [
+        ["VC8",
+                {
+                    compilerDir: "VC",
+                    dllPath: "Common7/IDE",
+                    sdkPath: "C:/Progra~1/MI2578~1/Windows/v6.0A",
+                    libs: " msvcrt.lib setargv.obj oldnames.lib ole32.lib oleaut32.lib olepro32.lib uuid.lib kernel32.lib user32.lib gdi32.lib advapi32.lib shell32.lib comctl32.lib"
+                }
+        ],
+];
+
+WIN.ccOpts.suffix += "-D___DSPBIOS___";
+
+Build.targets     = [
+                   // M3,
+                   GCArmv5T,                                    
+                    ];
+
+var Pkg = xdc.module("xdc.bld.PackageContents");
+Pkg.attrs.archiver = "zip";     /* package archive format is .zip */
+/*
+ *  ======== Pkg.libTemplate ========
+ *  Set default library version template to be used by all packages
+ */
+//Pkg.libTemplate = "ti/sdo/ce/utils/libvers.xdt";
+
+
+/* Pkg.attrs.profile = "debug"; */    /* default build profile is "debug" */
+
+                
