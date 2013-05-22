@@ -241,6 +241,7 @@ typedef enum OMX_TI_INDEXTYPE {
   OMX_TI_IndexConfigFrameRateControlType,     /**< reference: OMX_CONFIG_FRAMERATECONTROL_TYPE */
   OMX_TI_IndexConfigVFDCModifyMosaicLayout,   /**< reference: OMX_CONFIG_VFDC_MODIFYMOSAICLAYOUT */
   OMX_TI_IndexConfigTvpPortStatus,
+  OMX_TI_IndexConfigGDRSettings,		//!<use OMX_VIDEO_CONFIG_GDRINFOTYPE to specify the GDR parameters
   OMX_TI_IndexMAX  = 0x7F0FFFFF               /**< Last Index Used by TI */
 } OMX_TI_INDEXTYPE;
 

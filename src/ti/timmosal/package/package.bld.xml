@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="US-ASCII"?>
 <!--  This file conforms to the DTD xdc/bld/build.dtd -->
 <package name="ti.timmosal" version="" producerId="undefined">
     <units>
@@ -38,11 +38,11 @@
     </makefiles>
     <targets>
         <target name="ti.targets.elf.C674"
-            version="ti.targets.elf.C674{1,0,7.3,1"
+            version="ti.targets.elf.C674{1,0,7.3,4"
             platform="ti.platforms.evmDM8148"
             isa="674"
             suffix="e674"
-            rootDir="/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/dsp-devkit/cgt6x_7_3_1"
+            rootDir="/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/dsp-devkit/cgt6x_7_3_4"
             os="undefined"
             rts="ti.targets.rts6000">
             <model endian="little"

@@ -83,6 +83,8 @@ extern "C"
           }
 
 
+/* GDR Support */
+#define ENABLE_GDR 0 /* 1 - Enable, 0 - Disable */ 
 
 typedef struct IL_CLIENT_COMP_PRIVATE_T  IL_CLIENT_COMP_PRIVATE;
 

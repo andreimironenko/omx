@@ -15,83 +15,83 @@ XDCCFGDIR = package/cfg/
 # in the event that some included BOM script changes.
 #
 ifneq (clean,$(MAKECMDGOALS))
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/include/utils.tci:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/include/utils.tci
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/xdc.tci:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/xdc.tci
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/template.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/template.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/om2.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/om2.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/xmlgen.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/xmlgen.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/xmlgen2.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/xmlgen2.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/IPackage.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/IPackage.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/package.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/package.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/services/global/Clock.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/services/global/Clock.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/services/global/Trace.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/services/global/Trace.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/bld.js:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/bld.js
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/BuildEnvironment.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/BuildEnvironment.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/PackageContents.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/PackageContents.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/_gen.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/_gen.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/Library.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/Library.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/Executable.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/Executable.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/Repository.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/Repository.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/Configuration.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/Configuration.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/Script.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/Script.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/Manifest.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/Manifest.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/Utils.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/Utils.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/ITarget.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/ITarget.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/ITarget2.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/ITarget2.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/ITargetFilter.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/ITargetFilter.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/package.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/xdc/bld/package.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/omx_05_02_00_46/src/ti/omx/build/config_dsp.bld:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/omx_05_02_00_46/src/ti/omx/build/config_dsp.bld
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/omx_05_02_00_46/src/ti/omx/build/dspsubsys.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/omx_05_02_00_46/src/ti/omx/build/dspsubsys.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/omx_05_02_00_46/src/ti/omx/build/MemSegmentDefinition.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/omx_05_02_00_46/src/ti/omx/build/MemSegmentDefinition.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/ti/targets/ITarget.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/ti/targets/ITarget.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/ti/targets/C28_large.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/ti/targets/C28_large.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/ti/targets/C28_float.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/ti/targets/C28_float.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/ti/targets/package.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/ti/targets/package.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/ti/targets/elf/ITarget.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/ti/targets/elf/ITarget.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/ti/targets/elf/TMS470.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/ti/targets/elf/TMS470.xs
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/ti/targets/elf/package.xs:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/ti/targets/elf/package.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/include/utils.tci:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/include/utils.tci
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/xdc.tci:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/xdc.tci
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/template.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/template.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/om2.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/om2.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/xmlgen.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/xmlgen.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/xmlgen2.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/xmlgen2.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/IPackage.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/IPackage.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/package.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/package.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/services/global/Clock.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/services/global/Clock.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/services/global/Trace.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/services/global/Trace.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/bld.js:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/bld.js
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/BuildEnvironment.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/BuildEnvironment.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/PackageContents.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/PackageContents.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/_gen.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/_gen.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/Library.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/Library.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/Executable.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/Executable.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/Repository.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/Repository.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/Configuration.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/Configuration.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/Script.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/Script.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/Manifest.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/Manifest.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/Utils.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/Utils.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/ITarget.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/ITarget.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/ITarget2.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/ITarget2.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/ITargetFilter.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/ITargetFilter.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/package.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/xdc/bld/package.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/omx_05_02_00_48/src/ti/omx/build/config_dsp.bld:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/omx_05_02_00_48/src/ti/omx/build/config_dsp.bld
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/omx_05_02_00_48/src/ti/omx/build/dspsubsys.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/omx_05_02_00_48/src/ti/omx/build/dspsubsys.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/omx_05_02_00_48/src/ti/omx/build/MemSegmentDefinition.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/omx_05_02_00_48/src/ti/omx/build/MemSegmentDefinition.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/ti/targets/ITarget.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/ti/targets/ITarget.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/ti/targets/C28_large.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/ti/targets/C28_large.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/ti/targets/C28_float.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/ti/targets/C28_float.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/ti/targets/package.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/ti/targets/package.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/ti/targets/elf/ITarget.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/ti/targets/elf/ITarget.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/ti/targets/elf/TMS470.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/ti/targets/elf/TMS470.xs
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/ti/targets/elf/package.xs:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/ti/targets/elf/package.xs
 package.mak: package.bld
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/omx_05_02_00_46/src/ti/omx/build/common.bld:
-package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/omx_05_02_00_46/src/ti/omx/build/common.bld
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/omx_05_02_00_48/src/ti/omx/build/common.bld:
+package.mak: /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/omx_05_02_00_48/src/ti/omx/build/common.bld
 endif
 
-ti.targets.elf.C674.rootDir ?= /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/dsp-devkit/cgt6x_7_3_1
-ti.targets.elf.packageBase ?= /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/xdctools_3_23_03_53/packages/ti/targets/elf/
+ti.targets.elf.C674.rootDir ?= /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/dsp-devkit/cgt6x_7_3_4
+ti.targets.elf.packageBase ?= /swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/xdctools_3_23_03_53/packages/ti/targets/elf/
 .PRECIOUS: $(XDCCFGDIR)/%.oe674
 .PHONY: all,e674 .dlls,e674 .executables,e674 test,e674
 all,e674: .executables,e674
@@ -131,8 +131,8 @@ package/package.cfg.xdc.inc: $(XDCROOT)/packages/xdc/cfg/cfginc.js package.xdc
 	$(CONFIG) -f $(XDCROOT)/packages/xdc/cfg/cfginc.js ti.timmosal $@
 
 ifneq (clean,$(MAKECMDGOALS))
-package.mak:/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/codec_engine_3_22_01_06/packages/ti/sdo/ce/utils/libvers.xdt
-/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_01_04/component-sources/codec_engine_3_22_01_06/packages/ti/sdo/ce/utils/libvers.xdt:
+package.mak:/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/codec_engine_3_22_01_06/packages/ti/sdo/ce/utils/libvers.xdt
+/swcoe/sdk/cm/netra/ti-ezsdk_dm814x-evm_5_05_02_00/component-sources/codec_engine_3_22_01_06/packages/ti/sdo/ce/utils/libvers.xdt:
 
 endif
 .libraries,e674 .libraries: lib/ti.timmosal.ae674

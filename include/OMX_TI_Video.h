@@ -647,5 +647,25 @@ typedef struct OMX_PARAM_TVPSTATUS_TYPE {
     OMX_U32  frameHeight; /**<TVP reported height >***/
 } OMX_PARAM_TVPSTATUS_TYPE;
 
+/* ========================================================================== */
+/*!
+ @brief OMX_VIDEO_CONFIG_GDRINFOTYPE : to configure the Gradual decoder refresh
+ @param  enableGDR to specify to enable/disable GDR, default disable
+ @param  intraRefreshRateGDRDynamic to specify number of rows to be intra 
+            refresh per frame
+ @param  gdrOverlapRowsBtwFramesDynamic to specify number of row overlap 
+            between successive GDR frame, value less than intraRefreshRateGDRDynamic
+*/
+/* ==========================================================================*/ 
+
+typedef struct OMX_VIDEO_CONFIG_GDRINFOTYPE{		
+	OMX_U32	 nSize;
+	OMX_VERSIONTYPE nVersion;
+	OMX_U32 nPortIndex;
+	OMX_U32 enableGDR;
+	OMX_U32 intraRefreshRateGDRDynamic;
+    OMX_U32 gdrOverlapRowsBtwFramesDynamic;	
+}OMX_VIDEO_CONFIG_GDRINFOTYPE;
+
 #endif /* OMX_TI_VIDEO_H */
 

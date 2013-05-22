@@ -374,8 +374,7 @@ IL_ClientInputBitStreamReadTask (void *threadsArg)
     /* Pass the input buffer to the component */
     err = OMX_EmptyThisBuffer (encILComp->handle, pBufferIn);
     
-    frameCounter++;
-
+    frameCounter++;    
     if (OMX_ErrorNone != err)
     {
       /* put back the frame in pipe and wait for state change */
@@ -403,13 +402,16 @@ IL_ClientInputBitStreamReadTask (void *threadsArg)
 *
 */
 /* ========================================================================== */
-
+static int frame_count = 0;
 void IL_ClientOutputBitStreamWriteTask (void *threadsArg)
 {
   unsigned int frame_counter = 0;
   OMX_ERRORTYPE err = OMX_ErrorNone;
   IL_CLIENT_COMP_PRIVATE *encILComp = NULL;
   OMX_BUFFERHEADERTYPE *pBufferOut = NULL;
+  
+  OMX_VIDEO_CONFIG_GDRINFOTYPE gdrInfo;
+  OMX_VIDEO_CONFIG_DYNAMICPARAMS dynamicParam;
 
   encILComp = ((IL_Client *) threadsArg)->encILComp;
 
@@ -426,6 +428,7 @@ void IL_ClientOutputBitStreamWriteTask (void *threadsArg)
             sizeof (char),
             pBufferOut->nFilledLen, ((IL_Client *) threadsArg)->fOut);
     frame_counter++;
+    frame_count = frame_counter;
     if((frame_counter == encILComp->numFrames) || (gILClientExit == 1) || (g_EXIT_TASK == 1))
     {
       gILClientExitRead = 1;
@@ -434,6 +437,27 @@ void IL_ClientOutputBitStreamWriteTask (void *threadsArg)
       pthread_exit(NULL);
       break;
     }
+    
+#if ENABLE_GDR	
+    if(frame_count == 10)
+    {
+        OMX_INIT_PARAM (&gdrInfo);
+        gdrInfo.enableGDR = 1;
+        err = OMX_SetConfig (((IL_Client *) threadsArg)->pEncHandle,
+                                (OMX_INDEXTYPE) OMX_TI_IndexConfigGDRSettings,
+                                (OMX_PTR)&gdrInfo);
+    }
+
+    if(frame_count == 11)
+    {        
+        OMX_INIT_PARAM (&gdrInfo);
+        err = OMX_GetConfig (((IL_Client *) threadsArg)->pEncHandle,
+                            (OMX_INDEXTYPE) OMX_TI_IndexConfigGDRSettings,
+                            (OMX_PTR)&gdrInfo);
+        printf (" Get gdr status %d enableGDR %d intraRefreshRateGDRDynamic %d gdrOverlapRowsBtwFramesDynamic %d\n", 
+               err, gdrInfo.enableGDR, gdrInfo.intraRefreshRateGDRDynamic, gdrInfo.gdrOverlapRowsBtwFramesDynamic);
+    }   
+#endif /* ENABLE_GDR */	
 
     /* Pass the input buffer to the component */
     err = OMX_FillThisBuffer (encILComp->handle, pBufferOut);
@@ -656,8 +680,6 @@ Int Encode_Example (IL_ARGS *args)
   }
 
   printf (" file read thread created \n ");
-
-
 /******************************************************************************/
   /* Waiting for this semaphore to be posted by the bitstream write thread */
   semp_pend(pAppData->encILComp->eos);

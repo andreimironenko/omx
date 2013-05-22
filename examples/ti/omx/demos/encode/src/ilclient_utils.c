@@ -622,7 +622,7 @@ OMX_ERRORTYPE IL_ClientSetEncodeParams (IL_Client *pAppData)
 
   /* set as profile / level */
   if(pAppData->eCompressionFormat == OMX_VIDEO_CodingAVC) { 
-  tProfileLevel.eProfile = OMX_VIDEO_AVCProfileBaseline;
+  tProfileLevel.eProfile = OMX_VIDEO_AVCProfileHigh;
   tProfileLevel.eLevel = OMX_VIDEO_AVCLevel42;
   }
   else if (pAppData->eCompressionFormat == OMX_VIDEO_CodingMPEG4) {
@@ -652,9 +652,13 @@ OMX_ERRORTYPE IL_ClientSetEncodeParams (IL_Client *pAppData)
   eError = OMX_GetParameter (pHandle, OMX_TI_IndexParamVideoEncoderPreset,
                              &tEncoderPreset);
 
-  tEncoderPreset.eEncodingModePreset =  OMX_Video_Enc_Default; 
-  tEncoderPreset.eRateControlPreset = OMX_Video_RC_None;
+#if ENABLE_GDR 							 
+  tEncoderPreset.eEncodingModePreset = OMX_Video_Enc_User_Defined;    
+#else
+  tEncoderPreset.eEncodingModePreset = OMX_Video_Enc_Default;  
+#endif
 
+  tEncoderPreset.eRateControlPreset = OMX_Video_RC_None;
   eError = OMX_SetParameter (pHandle, OMX_TI_IndexParamVideoEncoderPreset,
                              &tEncoderPreset);
   if (eError != OMX_ErrorNone)
@@ -672,10 +676,24 @@ OMX_ERRORTYPE IL_ClientSetEncodeParams (IL_Client *pAppData)
   /* setting I frame interval */
   tDynParams.videoDynamicParams.h264EncDynamicParams.videnc2DynamicParams.targetFrameRate = pAppData->nFrameRate * 1000;
   tDynParams.videoDynamicParams.h264EncDynamicParams.videnc2DynamicParams.targetBitRate = pAppData->nBitRate;
-  tDynParams.videoDynamicParams.h264EncDynamicParams.rateControlParams.rateControlParamsPreset = IH264_RATECONTROLPARAMS_DEFAULT;
-  tDynParams.videoDynamicParams.h264EncDynamicParams.rateControlParams.HRDBufferSize = pAppData->nBitRate * 2;
   
-  tDynParams.videoDynamicParams.h264EncDynamicParams.videnc2DynamicParams.intraFrameInterval = 90;
+#if ENABLE_GDR  
+  /*Parameter setting for GDR*/
+  tDynParams.videoDynamicParams.h264EncDynamicParams.rateControlParams.rateControlParamsPreset = IH264_RATECONTROLPARAMS_USERDEFINED;  
+  tDynParams.videoDynamicParams.h264EncDynamicParams.intraCodingParams.intraCodingPreset = IH264_INTRACODING_USERDEFINED;
+  tDynParams.videoDynamicParams.h264EncDynamicParams.intraCodingParams.intraRefreshMethod = IH264_INTRAREFRESH_GDR;
+  tDynParams.videoDynamicParams.h264EncDynamicParams.intraCodingParams.intraRefreshRate = 4;
+  tDynParams.videoDynamicParams.h264EncDynamicParams.intraCodingParams.gdrOverlapRowsBtwFrames = 0;
+  /* updating rows to be intra refresh */
+  tDynParams.videoDynamicParams.h264EncDynamicParams.intraRefreshRateGDRDynamic = 4;
+  /* updating overlap rows */
+  tDynParams.videoDynamicParams.h264EncDynamicParams.gdrOverlapRowsBtwFramesDynamic = 0;
+#else
+  tDynParams.videoDynamicParams.h264EncDynamicParams.rateControlParams.rateControlParamsPreset = IH264_RATECONTROLPARAMS_DEFAULT;  
+  tDynParams.videoDynamicParams.h264EncDynamicParams.rateControlParams.HRDBufferSize = pAppData->nBitRate * 2;
+#endif
+  
+  tDynParams.videoDynamicParams.h264EncDynamicParams.videnc2DynamicParams.intraFrameInterval = 90;      
                          
   eError = OMX_SetParameter (pHandle, OMX_TI_IndexParamVideoDynamicParams,
                              &tDynParams);
@@ -687,11 +705,20 @@ OMX_ERRORTYPE IL_ClientSetEncodeParams (IL_Client *pAppData)
   eError = OMX_GetParameter (pHandle, OMX_TI_IndexParamVideoStaticParams,
                              &tStaticParam);
   
+#if ENABLE_GDR    
+  /*Parameter setting for GDR*/
+  tStaticParam.videoStaticParams.h264EncStaticParams.videnc2Params.encodingPreset = XDM_USER_DEFINED;    
+  tStaticParam.videoStaticParams.h264EncStaticParams.intraCodingParams.intraCodingPreset = IH264_INTRACODING_USERDEFINED;
+  tStaticParam.videoStaticParams.h264EncStaticParams.intraCodingParams.intraRefreshMethod = IH264_INTRAREFRESH_GDR;
+  tStaticParam.videoStaticParams.h264EncStaticParams.intraCodingParams.intraRefreshRate = 4;
+  tStaticParam.videoStaticParams.h264EncStaticParams.intraCodingParams.gdrOverlapRowsBtwFrames = 0;
+#else 
   tStaticParam.videoStaticParams.h264EncStaticParams.rateControlParams.HRDBufferSize = pAppData->nBitRate * 2;
   tStaticParam.videoStaticParams.h264EncStaticParams.videnc2Params.encodingPreset = XDM_DEFAULT;
-  tStaticParam.videoStaticParams.h264EncStaticParams.videnc2Params.rateControlPreset = IVIDEO_LOW_DELAY;
+#endif /* ENABLE_GDR */ 
   
-                        
+  tStaticParam.videoStaticParams.h264EncStaticParams.videnc2Params.rateControlPreset = IVIDEO_LOW_DELAY;
+                          
   eError = OMX_SetParameter (pHandle, OMX_TI_IndexParamVideoStaticParams,
                              &tStaticParam);
   }

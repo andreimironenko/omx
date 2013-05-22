@@ -181,6 +181,8 @@ Void configureUiaLoggerClient (Int coreId, ConfigureUIA *pCfgUIA)
   }
 
   System_printf ("UIAClient received UIA_CONFIGURE_ACK\n");
+  
+  MessageQ_free(msg);
 
   status = MessageQ_close (&serverQueue);
   if (status < 0)
